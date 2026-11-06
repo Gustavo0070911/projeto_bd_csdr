@@ -156,3 +156,27 @@ INSERT INTO usuario (nome, email, senha_hash, perfil, criado_em, atualizado_em) 
 ('Carlos Souza', 'carlos.souza@email.com', '2b12$L7R2m30mS4mS8mQ7mE1mO.7mR30mS4mS8', 'Gestor', NOW(), NOW()),
 
 ('Mariana Costa', 'mariana.costa@email.com', '2b12$Z1x2c3v4b5n6m7asdfghjklpowqeyruti', 'Cliente', NOW(), NOW());
+
+  CREATE TABLE relatorio_divergencia(
+
+  id_relatorio_divergencia SERIAL PRIMARY KEY,
+
+  fk_usuario int not null,
+
+  fk_aplicativo int,
+
+  fk_dispositivo int,
+
+  descricao_problema text not null,
+
+  status varchar(255),
+
+  criado_em timestamp,
+
+  constraint fk_usuario foreign key (fk_usuario) references usuario (id_usuario),
+
+  constraint fk_aplicativo foreign key (fk_aplicativo) references aplicativo (id_aplicativo),
+
+  constraint fk_dispositivo foreign key (fk_dispositivo) references dispositivo (id_dispositivo)
+
+);
